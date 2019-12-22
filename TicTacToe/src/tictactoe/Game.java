@@ -9,7 +9,19 @@ package tictactoe;
  * @author Matthew Fischer
  */
 public class Game extends javax.swing.JFrame {
-
+    
+    
+    // First Turn
+    
+    // Second Turn
+    
+    // check end
+    public boolean checkEnd(){
+        boolean end = false;
+        
+       
+        return end;
+    }
     /**
      * Creates new form Game
      */
