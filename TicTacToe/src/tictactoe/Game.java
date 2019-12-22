@@ -12,7 +12,9 @@ public class Game extends javax.swing.JFrame {
     
     
     // First Turn
-    
+    public void firstPlayer(java.awt.event.ActionEvent e){
+        
+    }
     // Second Turn
     
     // check end
