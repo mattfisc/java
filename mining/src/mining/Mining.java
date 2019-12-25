@@ -14,7 +14,7 @@ public class Mining {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int[][] map = new arr[3][3];
+        int[][] map = new int[3][3];
     }
     
 }
