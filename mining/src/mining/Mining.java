@@ -10,11 +10,15 @@ package mining;
  */
 public class Mining {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        int[][] map = new int[3][3];
+    int[][] map;
+    int positionX;
+    int positionY;
+    public Mining(){
+        map  = new int[100][100];
+        positionX = 0;
+        positionY = 0;
     }
+    
+  
     
 }
