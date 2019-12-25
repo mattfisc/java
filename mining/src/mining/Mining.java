@@ -10,11 +10,12 @@ package mining;
  */
 public class Mining {
 
-    int[][] map;
-    int positionX;
-    int positionY;
+    private Cell[][] map;
+    private int positionX;
+    private int positionY;
+    
     public Mining(){
-        map  = new int[100][100];
+        map  = new Cell[100][100];
         positionX = 0;
         positionY = 0;
     }
