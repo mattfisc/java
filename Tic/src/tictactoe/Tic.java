@@ -256,8 +256,22 @@ public class Tic extends JFrame implements ActionListener, MouseListener
             }
         }
         
-        // TIE NO WINNER
-        if(winner == ' ')// or 9 if two player
+        // CHECK TIE
+        boolean tieGame = true;
+        if(winner == ' '){
+            // NO WINNER  AND END OF SPACES
+            
+            for(int i = 0; i < game.length;i++){
+                for(int j = 0; j < game[0].length;j++){
+                    if(game[i][j] == ' '){
+                        tieGame = false;
+                    }
+                }
+            }
+        }
+        
+        // TIE GAME
+        if(tieGame)// or 9 if two player
         {
             isDone = true;// game ends
             status.setText("Tie Game");// status label outputs
