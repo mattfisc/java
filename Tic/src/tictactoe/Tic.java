@@ -16,7 +16,7 @@ import javax.swing.*;
 
 
 // extend JFrame and implement events: action listener and mouse listener
-public class TicTacToe extends JFrame implements ActionListener, MouseListener 
+public class Tic extends JFrame implements ActionListener, MouseListener 
 {
     // get Pane
     Container content = this.getContentPane();
@@ -35,7 +35,7 @@ public class TicTacToe extends JFrame implements ActionListener, MouseListener
     JLabel[][] grid = new JLabel[3][3];// 2d object array
     char[][] game = new char[3][3];// 2d char array
     
-    int numClicks = 0;// store number of clicks
+ 
     boolean isDone = false;// is game over
     boolean isXTurn = true;// X always goes first
 
@@ -53,7 +53,7 @@ public class TicTacToe extends JFrame implements ActionListener, MouseListener
     JLabel ties = new JLabel("Ties " + tie, JLabel.CENTER);
    
     
-    public TicTacToe()
+    public Tic()
     {
         // create gui window
         this.createWindow();
@@ -185,7 +185,7 @@ public class TicTacToe extends JFrame implements ActionListener, MouseListener
                     // 'X's turn
                     // d. Toggle isXTurn, increment numClicks
                     isXTurn = !isXTurn;
-                    numClicks++;
+                    //numClicks++;
                     // Check to see if game is over after each click
                     gameOver();
                 }
@@ -216,21 +216,24 @@ public class TicTacToe extends JFrame implements ActionListener, MouseListener
    
     public void gameOver()
     {
+        boolean checkWinner = false;
         char winner = ' ';// store winning player 'X' or 'O'
         
-        // Check first diagonal
-        if(game[0][0] == game[1][1] && game[0][0] == game[2][2])
+        
+        //   X OR O   IS WINNER
+        // CHECK FIRST DIAGONAL
+        if(game[0][0] == game[1][1] && game[0][0] == game[2][2] && game[0][0] != ' ')
         {
             winner = game[0][0];// set winner
         }
         
-        // check second diagonal
-        else if(game[2][0] == game[1][1] && game[2][0] == game[0][2])
+        // CHECK SECOND DIAGONAL
+        else if(game[2][0] == game[1][1] && game[2][0] == game[0][2]  && game[2][0] != ' ')
         {
             winner = game[2][0];// set winner
         }
         
-        // check rows and columns
+        // CHECK ROWS AND COLUMNS
         else if(winner == ' ')
         {
             for(int row = 0; row < 3; row++)
@@ -239,7 +242,7 @@ public class TicTacToe extends JFrame implements ActionListener, MouseListener
                 {
                     // check rows for winner
                     if(game[row][0] != ' ' && game[row][0] == game[row][1] 
-                            && game[row][0] == game[row][2])
+                            && game[row][0] == game[row][2] )
                     {
                         winner = game[row][0];// set winner
                     }
@@ -253,8 +256,8 @@ public class TicTacToe extends JFrame implements ActionListener, MouseListener
             }
         }
         
-        // check for tie
-        if(winner == ' ' && numClicks == 9)// or 9 if two player
+        // TIE NO WINNER
+        if(winner == ' ')// or 9 if two player
         {
             isDone = true;// game ends
             status.setText("Tie Game");// status label outputs
@@ -307,7 +310,7 @@ public class TicTacToe extends JFrame implements ActionListener, MouseListener
             {
                 grid[row][col].setText(" ");// set all grid labels to " "
                 game[row][col] = ' ';// set all game char to ' '
-                numClicks = 0;// reset count to zero
+                //numClicks = 0;// reset count to zero
                 isXTurn = true;// X starts game
             }
         }
@@ -341,7 +344,7 @@ public class TicTacToe extends JFrame implements ActionListener, MouseListener
     
     public static void main(String[] args) 
     {
-        TicTacToe t = new TicTacToe();// create instance of class
+        Tic t = new Tic();// create instance of class
     }
     
 }
