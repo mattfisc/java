@@ -36,8 +36,8 @@ public class Tic extends JFrame implements ActionListener, MouseListener
     char[][] game = new char[3][3];// 2d char array
     
  
-    boolean isDone = false;// is game over
-    boolean isXTurn = true;// X always goes first
+ 
+    boolean endGame = false;// X always goes first
 
     // create font for status
     Font fntStatus = new Font("Helvetica",Font.BOLD,12);// status label font
@@ -144,10 +144,7 @@ public class Tic extends JFrame implements ActionListener, MouseListener
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        
-        if(isDone) 
-            resetGame();// if game is done reset game
-        
+  
         JLabel clicked = (JLabel) e.getSource();
         
         next:
@@ -165,9 +162,28 @@ public class Tic extends JFrame implements ActionListener, MouseListener
                     
                     else if(" ".equals(clicked.getText()) )
                     {
-                        clicked.setText("X");// set X
-                        clicked.setForeground(Color.RED); // set X color red
-                        game[row][col] = 'X';// set 'X' game char array
+                        // PLAYER TURN
+                        if(endGame == false){
+                            
+                            clicked.setText("X");// set X
+                            clicked.setForeground(Color.RED); // set X color red
+                            game[row][col] = 'X';// set 'X' game char array
+
+                            // END OF PLAYER TURN
+                            gameOver();
+                        }
+                        
+                        // COMPUTER TURN
+                        if(endGame == false){
+                            
+                            // TO FAST TO DISPLAY
+                            status.setText("Computer's Turn");
+
+                            computerTurnRnd();
+
+                            // END OF COMPUTER TURN
+                            gameOver();
+                        }
                         
                         
                     }
@@ -175,42 +191,34 @@ public class Tic extends JFrame implements ActionListener, MouseListener
                     
                     else
                     {
-                        // 'O's turn computer
-                        System.out.println("error");
-/*                      
-                        // PLAYER TW0'S TURN
-                        clicked.setText("O");// set O
-                        clicked.setForeground(Color.BLUE);// set O color
-                        game[turn][turn] = 'O';// game array save char O
-*/
+                        
+                        System.out.println("error in clicks");
                     }
                     
-                    // COMPUTER TURN
-                    computerTurnRnd();
-                    
-                    // END 
-                    gameOver();
+                   
                 }
             }
         }
+        
             
     }
     
     // COMPUTER TURN
     public void computerTurnRnd(){
         Random rnd = new Random();
-        int row = rnd.nextInt(2);
-        int col = rnd.nextInt(2);
+        int row = rnd.nextInt(3);
+        int col = rnd.nextInt(3);
         
         // PICK AVAILABLE MOVE
         while(game[row][col] != ' '){
-            row = rnd.nextInt(2);
-            col = rnd.nextInt(2);
+            row = rnd.nextInt(3);
+            col = rnd.nextInt(3);
         }
-        
+        System.out.println("computer turn " + row +" " +col);
         // display computer turn
         game[row][col] = 'O';
         grid[row][col].setText("0");
+        grid[row][col].setForeground(Color.BLACK);
        
     }
     
@@ -229,26 +237,27 @@ public class Tic extends JFrame implements ActionListener, MouseListener
         }
         
         // CHECK SECOND DIAGONAL
-        else if(game[2][0] == game[1][1] && game[2][0] == game[0][2]  && game[2][0] != ' ')
+        else if(game[2][0] == game[1][1] && game[2][0] == game[0][2] && game[2][0] != ' ')
         {
             winner = game[2][0];// set winner
         }
         
         // CHECK ROWS AND COLUMNS
-        else if(winner == ' ')
+        else
         {
             for(int row = 0; row < 3; row++)
             {
                 for(int col = 0; col < 3; col++)
                 {
-                    // check rows for winner
+                    // CHECK ROW
                     if(game[row][0] != ' ' && game[row][0] == game[row][1] 
                             && game[row][0] == game[row][2] )
                     {
                         winner = game[row][0];// set winner
                     }
                     
-                    // check for column winner
+                    // CHECK COL
+                    // ROW CHECKS EACH ROW
                     else if(game[0][row] != ' ' && game[0][row] == game[1][row] && game[0][row] == game[2][row])
                     {
                         winner = game[0][row];// set winner
@@ -258,26 +267,27 @@ public class Tic extends JFrame implements ActionListener, MouseListener
         }
         
         // TIE GAME OR GAME CONTINUES
-        boolean tieGame = true;
+        boolean noMovesLeft = true;
         if(winner == ' '){
             // NO WINNER  AND END OF SPACES
             
             for(int i = 0; i < 3;i++){
                 for(int j = 0; j < 3;j++){
                     if(game[i][j] == ' '){
-                        tieGame = false;
+                        noMovesLeft = false;
                     }
                 }
             }
         }
         
         // DECLARE TIE GAME
-        if(tieGame)// or 9 if two player
+        if(noMovesLeft && winner == ' ')
         {
-            isDone = true;// game ends
+           
             status.setText("Tie Game");// status label outputs
             tie++;
             ties.setText("Ties " + tie);
+            endGame = true;
         }
         
         // DECLARE WINNER
@@ -285,7 +295,7 @@ public class Tic extends JFrame implements ActionListener, MouseListener
         {
             // label outputs winner
             status.setText("Game Over " + winner + " Won!!!");
-            isDone = true;
+            endGame = true;
             
             if(winner == 'X'){
                 win++;
@@ -296,9 +306,13 @@ public class Tic extends JFrame implements ActionListener, MouseListener
                 loses.setText("Loses " + lose);
             }
         }
+        else{
+            // GAME CONTINUES NO WINNER FOUND
+            status.setText("X's Turn");// label outputs turn
+
+        }
         
-        status.setText("X's Turn");// label outputs turn
-        isDone = false;// game is not over
+        
         
     }
     
@@ -309,10 +323,9 @@ public class Tic extends JFrame implements ActionListener, MouseListener
         {
             for(int col = 0; col < 3; col++)
             {
+                endGame = false;
                 grid[row][col].setText(" ");// set all grid labels to " "
                 game[row][col] = ' ';// set all game char to ' '
-                
-                
             }
         }
     }
