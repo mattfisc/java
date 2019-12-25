@@ -16,7 +16,6 @@ public class Robot {
     
   
     private int speed;
-    
     private int time_worked;
     
     public Robot(){
@@ -32,7 +31,6 @@ public class Robot {
         
         closest_block[0] = southD;
         closest_block[1] = eastD;
- 
     }
     
 }

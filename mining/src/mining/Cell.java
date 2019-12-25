@@ -11,11 +11,14 @@ package mining;
 public class Cell {
     
     // AUTO NOT MINED
-    private boolean mined = false;
+    private boolean rock = true;
     
     public Cell(){
         
     }
     
-    
+    private void mined(){
+       rock = false;
+    }
+
 }
