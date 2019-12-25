@@ -8,17 +8,21 @@ package mining;
  *
  * @author Matthew Fischer
  */
-public class Cell {
+public class Cell extends Mining{
     
     // AUTO NOT MINED
-    private boolean rock = true;
+    private boolean rock;
     
     public Cell(){
-        
+        rock = true;
     }
     
-    private void mined(){
-       rock = false;
+    public boolean getRock(){
+       return rock;
+    }
+    
+    public void setRock(boolean mined){
+        rock = mined;
     }
 
 }

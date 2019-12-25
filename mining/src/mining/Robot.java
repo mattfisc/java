@@ -25,12 +25,4 @@ public class Robot {
         time_worked = 100; // total time worked 100 seconds
     }
     
-    public void estimate_closest(){
-        int southD = 0;
-        int eastD = 0;
-        
-        closest_block[0] = southD;
-        closest_block[1] = eastD;
-    }
-    
 }
