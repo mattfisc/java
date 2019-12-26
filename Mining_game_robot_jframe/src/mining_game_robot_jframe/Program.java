@@ -11,32 +11,15 @@ package mining_game_robot_jframe;
  */
 public class Program {
 
-    Mining map = new Mining();
-    Robot r2 = new Robot();
-    
-    
     public static void main(String[] args) {
         
 
-    Mining m = new Mining();
-    Cell c = new Cell();
-   
-    //Program p = new Program();
-        //boolean x = map.getCell(0, 0);
-    }
-    
-    // MINING 
-    public void mine_rock(int x,int y){
-        // CHANGE ROCK
-        map.setCellMined(x, y);
-        
-        // SET CLOSEST CELL
-        map.setClosest_cell();
-        
-        // GET CLOSEST CELL
-        map.getClosest_cell();
-        // CHANGE ROBOT WORK
-        r2.setTime_worked(map.getClosest_distance());
+        Mining m = new Mining();
+        Cell c = new Cell();
+
+        for(int i = 0; i < 100; i++){
+            System.out.println(m.map[0][i].getRock());
+        }
     }
     
 }

@@ -8,10 +8,10 @@ package mining_game_robot_jframe;
  *
  * @author Matthew Fischer
  */
-public class Cell extends Mining{
+public class Cell{
     
     // AUTO NOT MINED
-    public boolean rock;
+    private boolean rock;
     
     public Cell(){ // ERROR
         this.rock = true;
