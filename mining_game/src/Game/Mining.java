@@ -26,17 +26,21 @@ public class Mining {
         map[elevator[0]][elevator[1]].setRock(false);
        
     }
-    
-    
-    
-    // GET CELL
-    public boolean getCell(int x,int y){
-        return map[x][y].getRock();
+
+    public Cell[][] getMap() {
+        return map;
     }
-    
-    // SET CELL
-    public void setCellMined(int x, int y){
-        map[x][y].setRock(false);
+
+    public void setMap(Cell[][] map) {
+        this.map = map;
+    }
+
+    public int[] getElevator() {
+        return elevator;
+    }
+
+    public void setElevator(int[] elevator) {
+        this.elevator = elevator;
     }
 
     public int[] getClosest_cell() {
@@ -59,7 +63,7 @@ public class Mining {
                 
                 if(distance < closest_distance){
                     // NEW CLOSEST DISTANCE
-                    closest_distance = distance;
+                    this.setClosest_distance(distance);
                     // CLOSEST CELL
                     closest_cell[0] = s;
                     closest_cell[1] = e;
@@ -72,6 +76,11 @@ public class Mining {
         return closest_distance;
     }
 
+    public void setClosest_distance(int closest_distance) {
+        this.closest_distance = closest_distance;
+    }
+    
+    
     
 
 
