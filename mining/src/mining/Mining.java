@@ -47,4 +47,14 @@ public class Mining {
         }
     }
     
+    // GET CELL
+    public Mining getCell(int x,int y){
+        return map[x][y];
+    }
+    
+    // SET CELL
+    public void setCellMined(int x, int y){
+        map[x][y].setRock(false);
+    }
+    
 }
