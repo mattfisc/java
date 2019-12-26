@@ -11,23 +11,33 @@ package mining;
 public class Mining {
 
     private Cell[][] map;
-    private int[] position;
+    private int[] elevator = {0,0};
     
     public Mining(){
         map  = new Cell[100][100];
-        position = [0][0];
+  
     }
     
     public void estimate_closest(){
         int closest_cell[] = new int[2];
         
         // CLOSEST POINT
-        int[] is_closest = new int[2];
+        // START HERE
+        int[] is_closest = null;
         
         for(int s = 0; s < map.length; s++){
             for(int e = 0; e < map[0].length; e++){
-                if(map[s][e].getRock() == false){
+                // NULL
+                if(is_closest == null){
+                    is_closest = 
+                }
+                
+                if(map[s][e].getRock() == true){
                     
+                    // IF CLOSEST < CHECK
+                    if( (is_closest[0]-s)+(is_closest[1]-e) < (s - elevator[0])+(e-elevator[1]) ){
+                        
+                    }
                 }
             }
         }
