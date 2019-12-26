@@ -21,6 +21,9 @@ public class Mining {
                 map[i][j] = new Cell();
             }
         }
+        
+        // ELEVATOR SET TO ROCK MINED
+        map[elevator[0]][elevator[1]].setRock(false);
        
     }
     

@@ -15,11 +15,8 @@ public class Program {
         
 
         Mining m = new Mining();
-        Cell c = new Cell();
-
-        for(int i = 0; i < 100; i++){
-            System.out.println(m.map[0][i]);
-        }
+     
+        System.out.println(m.map[0][0].rock);
     }
     
 }

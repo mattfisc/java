@@ -8,7 +8,7 @@ package Game;
  *
  * @author Matthew Fischer
  */
-public class Cell extends Mining{
+public class Cell{
     
     // AUTO NOT MINED
     public boolean rock;
