@@ -18,7 +18,7 @@ public class Program {
         Cell c = new Cell();
 
         for(int i = 0; i < 100; i++){
-            System.out.println(m.map[0][i].getRock());
+            System.out.println(m.map[0][i]);
         }
     }
     

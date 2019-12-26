@@ -11,8 +11,6 @@ public class Mining {
 
     public Cell[][] map;
 
-  
-
     public Mining(){
         map  = new Cell[100][100];
         
@@ -23,4 +21,14 @@ public class Mining {
             }
         }
     }
+
+    public Cell[][] getMap() {
+        return map;
+    }
+
+    public void setMap(Cell[][] map) {
+        this.map = map;
+    }
+    
+    
 }

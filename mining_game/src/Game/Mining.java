@@ -7,16 +7,24 @@ package Game;
  */
 public class Mining {
 
-    private Cell[][] map;
-    private int[] elevator = {0,0};
-    private int closest_cell[];
-    private int closest_distance;
+    public Cell[][] map;
+    public int[] elevator = {0,0};
+    public int closest_cell[];
+    public int closest_distance;
 
     public Mining(){
         map  = new Cell[100][100];
         
+        // INITAILIZE MAP
+        for(int i = 0; i < 100; i++){
+            for(int j = 0; j < 100; j++){
+                map[i][j] = new Cell();
+            }
+        }
+        
         // SET ELEVATOR TO MINED
         map[0][0].setRock(false);
+        
         
         // X, Y
         closest_cell = new int[2];

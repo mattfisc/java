@@ -9,29 +9,30 @@ package Game;
  * @author Matthew Fischer
  */
 public class Game {
-    Mining map;
+    Mining m;
     Robot r2;
     
     public Game(){
-        map = new Mining();
+        m = new Mining();
         r2 = new Robot();
     }
     public static void main(String[] args) {
         Game g = new Game();
-        //boolean x = map.getCell(0, 0);
+        
+        System.out.println( m.map[0][0].rock);
     }
     
     // MINING 
     public void mine_rock(int x,int y){
         // CHANGE ROCK
-        map.setCellMined(x, y);
+        m.setCellMined(x, y);
         
         // SET CLOSEST CELL
-        map.setClosest_cell();
+        m.setClosest_cell();
         
         // GET CLOSEST CELL
-        map.getClosest_cell();
+        m.getClosest_cell();
         // CHANGE ROBOT WORK
-        r2.setTime_worked(map.getClosest_distance());
+        r2.setTime_worked(m.getClosest_distance());
     }
 }

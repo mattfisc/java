@@ -11,7 +11,7 @@ package Game;
 public class Cell extends Mining{
     
     // AUTO NOT MINED
-    private boolean rock;
+    public boolean rock;
     
     public Cell(){
         rock = true;

@@ -8,7 +8,7 @@ package mining_game_robot_jframe;
  *
  * @author Matthew Fischer
  */
-public class Cell{
+public class Cell extends Mining{
     
     // AUTO NOT MINED
     private boolean rock;
@@ -17,11 +17,11 @@ public class Cell{
         this.rock = true;
     }
     
-    public boolean getRock(){
+    private boolean getRock(){
        return rock;
     }
     
-    public void setRock(boolean mined){
+    private void setRock(boolean mined){
         rock = mined;
     }
 
