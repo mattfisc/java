@@ -4,6 +4,7 @@
  */
 package mining_game_robot_jframe;
 
+
 /**
  *
  * @author Matthew Fischer
@@ -19,7 +20,7 @@ public class Program {
 
     Mining m = new Mining();
     Cell c = new Cell();
-    System.out.println("mine" + m.getCell(0, 0));
+   
     //Program p = new Program();
         //boolean x = map.getCell(0, 0);
     }

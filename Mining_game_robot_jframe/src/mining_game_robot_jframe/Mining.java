@@ -5,21 +5,27 @@ package mining_game_robot_jframe;
  *
  * @author Matthew Fischer
  */
+
+
 public class Mining {
 
-    private Cell[][] map;
-    private int[] elevator = {0,0};
-    private int[] closest_cell;
-    private int closest_distance;
+    public Cell[][] map;
+    public int[] elevator = {0,0};
+    public int[] closest_cell;
+    public int closest_distance;
 
     public Mining(){
         map  = new Cell[100][100];
         
-        for(int s = 0; s < map.length; s++){
-            for(int e = 0; e < map[0].length; e++){
-                map[s][e] = new Cell();
+        
+        for(int s = 0; s < 100; s++){
+            for(int e = 0; e < 100; e++){
+                map[s][e] = new Cell();// ERROR 
             }
         }
+        
+        
+      
         // SET ELEVATOR TO MINED
         // map[0][0] = new Cell();
         

@@ -13,8 +13,8 @@ public class Cell extends Mining{
     // AUTO NOT MINED
     public boolean rock;
     
-    public Cell(){
-        rock = true;
+    public Cell(){ // ERROR
+        this.rock = true;
     }
     
     public boolean getRock(){

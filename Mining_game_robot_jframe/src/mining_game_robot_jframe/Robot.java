@@ -8,6 +8,8 @@ package mining_game_robot_jframe;
  *
  * @author Matthew Fischer
  */
+
+
 public class Robot {
     private int[] closest_block;
     
