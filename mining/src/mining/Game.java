@@ -19,4 +19,12 @@ public class Game {
     public static void main(String[] args) {
         Game g = new Game();
     }
+    
+    // MINING 
+    public void mine_rock(){
+        // CHANGE ROCK
+        
+        
+        // CHANGE ROBOT WORK
+    }
 }
