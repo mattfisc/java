@@ -2,7 +2,7 @@
  * By:     Matthew Fischer
  * Date:   
  */
-package mining;
+package mining_game_robot_jframe;
 
 /**
  *
@@ -11,7 +11,7 @@ package mining;
 public class Cell extends Mining{
     
     // AUTO NOT MINED
-    private boolean rock;
+    public boolean rock;
     
     public Cell(){
         rock = true;

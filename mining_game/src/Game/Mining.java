@@ -1,5 +1,5 @@
 
-package mining;
+package Game;
 
 /**
  *
@@ -9,24 +9,40 @@ public class Mining {
 
     private Cell[][] map;
     private int[] elevator = {0,0};
-    
+    private int closest_cell[];
+    private int closest_distance;
 
     public Mining(){
         map  = new Cell[100][100];
         
         // SET ELEVATOR TO MINED
         map[0][0].setRock(false);
-  
+        
+        // X, Y
+        closest_cell = new int[2];
     }
     
-    public void estimate_closest(){
-        
-        int closest_cell[] = new int[2];
-        
+    
+    
+    // GET CELL
+    public boolean getCell(int x,int y){
+        return map[x][y].getRock();
+    }
+    
+    // SET CELL
+    public void setCellMined(int x, int y){
+        map[x][y].setRock(false);
+    }
+
+    public int[] getClosest_cell() {
+        return closest_cell;
+    }
+
+    public void setClosest_cell() {
         // START CORDINATES 0,0
         // START HERE 
         // WORST CASE SENARIO
-        double closestD = 200;
+        closest_distance = 200;
         
         for(int s = 0; s < map.length; s++){
             for(int e = 0; e < map[0].length; e++){
@@ -34,11 +50,11 @@ public class Mining {
                 // FIND CLOSEST
                 // DISTANCE FORMULA         
                 // SECOND POINT IS(0,0)
-                double distance = Math.sqrt( Math.pow(s,2)+ Math.pow(e,2) );
+                int distance = (int)(Math.sqrt( Math.pow(s,2)+ Math.pow(e,2) ));
                 
-                if(distance < closestD){
+                if(distance < closest_distance){
                     // NEW CLOSEST DISTANCE
-                    closestD = distance;
+                    closest_distance = distance;
                     // CLOSEST CELL
                     closest_cell[0] = s;
                     closest_cell[1] = e;
@@ -46,15 +62,13 @@ public class Mining {
             }
         }
     }
-    
-    // GET CELL
-    public Mining getCell(int x,int y){
-        return map[x][y];
+
+    public int getClosest_distance() {
+        return closest_distance;
     }
+
     
-    // SET CELL
-    public void setCellMined(int x, int y){
-        map[x][y].setRock(false);
-    }
+
+
     
 }

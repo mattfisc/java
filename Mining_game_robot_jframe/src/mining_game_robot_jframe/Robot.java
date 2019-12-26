@@ -2,7 +2,7 @@
  * By:     Matthew Fischer
  * Date:   
  */
-package mining;
+package mining_game_robot_jframe;
 
 /**
  *

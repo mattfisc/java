@@ -2,7 +2,7 @@
  * By:     Matthew Fischer
  * Date:   
  */
-package mining;
+package Game;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Game {
     }
     public static void main(String[] args) {
         Game g = new Game();
-        System.out.println();
+        //boolean x = map.getCell(0, 0);
     }
     
     // MINING 
@@ -26,7 +26,12 @@ public class Game {
         // CHANGE ROCK
         map.setCellMined(x, y);
         
-        // CHANGE ROBOT WORK
+        // SET CLOSEST CELL
+        map.setClosest_cell();
         
+        // GET CLOSEST CELL
+        map.getClosest_cell();
+        // CHANGE ROBOT WORK
+        r2.setTime_worked(map.getClosest_distance());
     }
 }
