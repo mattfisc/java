@@ -22,6 +22,7 @@ public class Game extends JFrame{
     }
     
     public static void main(String[] args) {
+        Game g = new Game();
         Mining m = new Mining();
         
         
@@ -33,7 +34,7 @@ public class Game extends JFrame{
     {
         // create program window
         this.setVisible(true);// set window visible
-        this.setSize(400,400);// set window size
+        this.setSize(500,500);// set window size
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // set window will close on exiting button
         this.setTitle("Mining");// set window title
