@@ -21,13 +21,7 @@ public class Mining {
                 map[i][j] = new Cell();
             }
         }
-        
-        // SET ELEVATOR TO MINED
-        map[0][0].setRock(false);
-        
-        
-        // X, Y
-        closest_cell = new int[2];
+       
     }
     
     
