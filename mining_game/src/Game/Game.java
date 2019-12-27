@@ -94,7 +94,7 @@ public class Game extends JFrame{
     
     // FIND CLOSEST
     public void mine_closest(){
-        int[] close = m.closest_cell;
+        Cell close = m.closest_cell;
         // GET CLOSEST CELL
         m.closest_cell = m.getClosest_cell();
         
