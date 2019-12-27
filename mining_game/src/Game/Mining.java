@@ -67,6 +67,7 @@ public class Mining {
                     // CLOSEST CELL
                     closest_cell[0] = s;
                     closest_cell[1] = e;
+                    System.out.println("print closest point");
                 }
             }
         }

@@ -75,7 +75,7 @@ public class Game extends JFrame{
     
     public static void main(String[] args) {
         Game g = new Game();
-        
+        g.mine_closest();
         
         
         
@@ -90,5 +90,19 @@ public class Game extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // set window will close on exiting button
         this.setTitle("Mining");// set window title
+    }
+    
+    // FIND CLOSEST
+    public void mine_closest(){
+        
+        // GET CLOSEST CELL
+        m.closest_cell = m.getClosest_cell();
+        
+        // MINE CELL
+        m.map[m.closest_cell[0]][m.closest_cell[1]].setRock(false);
+        
+        // PAINT CELL
+        board[m.closest_cell[0]][m.closest_cell[1]].setBackground(Color.red);
+        
     }
 }
