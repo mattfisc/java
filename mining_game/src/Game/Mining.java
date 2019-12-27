@@ -49,24 +49,30 @@ public class Mining {
     }
 
     public void setClosest_cell() {
-        // START CORDINATES 0,0
-        // START HERE 
-        // WORST CASE SENARIO
-        closest_distance = 0;
-        
-        int x = 1;
-        int y = 1;
+
+        int col = 1;
+        int row = 1;
         // FIND CELL CLOSEST AT DIAGONAL
         
-        while(map[x][y].rock == false){
-            x++;
-            y++;
+        while(map[col][row].rock == false){
+            col++;
+            row++;
         }
+        // WORST CASE CLOSEST CELL
+        closest_cell = map[col][row];
+        closest_distance = (int)Math.sqrt( Math.pow(col, 2) + Math.pow(row,2) );
+        System.out.println(closest_distance);
         
-        // ROCK FOUND WORST CASE
-        for(int i = 0; i <= x; i++){
-            for(int j = 0; j <= y; j++){
-                
+        
+        int temp = 0;
+        // FIND CLOSER CELL
+        for(int i = 0; i <= closest_distance; i++){// row or y
+            for(int j = 0; j <= closest_distance; j++){// col or x
+                temp = (int)Math.sqrt( Math.pow(i, 2) + Math.pow(j,2) );
+                if(closest_distance > temp){
+                    closest_distance = temp;
+                    closest_cell = new Cell(j,i);// 
+                }
             }
         }
     }
