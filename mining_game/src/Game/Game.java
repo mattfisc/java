@@ -51,7 +51,7 @@ public class Game extends JFrame{
         // ADD JLABEL TO PANEL
         for(int row = 0; row < 100; row++){
             for(int col = 0; col < 100; col++){
-                board[row][col] = new JButton("X");
+                board[row][col] = new JButton(" ");
                 board[row][col].setOpaque(true);// set text visible
                 board[row][col].setBackground(Color.white);//set background color
                 if(m.map[row][col].rock == true){
@@ -94,15 +94,15 @@ public class Game extends JFrame{
     
     // FIND CLOSEST
     public void mine_closest(){
-        
+        int[] close = m.closest_cell;
         // GET CLOSEST CELL
         m.closest_cell = m.getClosest_cell();
         
         // MINE CELL
-        m.map[m.closest_cell[0]][m.closest_cell[1]].setRock(false);
+        m.map[close[0]][close[1]].setRock(false);
         
         // PAINT CELL
-        board[m.closest_cell[0]][m.closest_cell[1]].setBackground(Color.red);
+        board[close[0]][close[1]].setBackground(Color.red);
         
     }
 }

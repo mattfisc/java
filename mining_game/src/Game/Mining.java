@@ -9,7 +9,7 @@ public class Mining {
 
     public Cell[][] map;
     public int[] elevator = {0,0};
-    public int closest_cell[];
+    public Cell closest_cell;
     public int closest_distance;
 
     public Mining(){
@@ -18,13 +18,14 @@ public class Mining {
         // INITAILIZE MAP
         for(int i = 0; i < 100; i++){
             for(int j = 0; j < 100; j++){
-                map[i][j] = new Cell();
+                map[i][j] = new Cell(i,j);
             }
         }
         
         // ELEVATOR SET TO ROCK MINED
         map[elevator[0]][elevator[1]].setRock(false);
-       
+        
+        
     }
 
     public Cell[][] getMap() {
@@ -43,7 +44,7 @@ public class Mining {
         this.elevator = elevator;
     }
 
-    public int[] getClosest_cell() {
+    public Cell getClosest_cell() {
         return closest_cell;
     }
 
@@ -51,24 +52,21 @@ public class Mining {
         // START CORDINATES 0,0
         // START HERE 
         // WORST CASE SENARIO
-        closest_distance = 200;
+        closest_distance = 0;
         
-        for(int s = 0; s < map.length; s++){
-            for(int e = 0; e < map[0].length; e++){
+        int x = 1;
+        int y = 1;
+        // FIND CELL CLOSEST AT DIAGONAL
+        
+        while(map[x][y].rock == false){
+            x++;
+            y++;
+        }
+        
+        // ROCK FOUND WORST CASE
+        for(int i = 0; i <= x; i++){
+            for(int j = 0; j <= y; j++){
                 
-                // FIND CLOSEST
-                // DISTANCE FORMULA         
-                // SECOND POINT IS(0,0)
-                int distance = (int)(Math.sqrt( Math.pow(s,2)+ Math.pow(e,2) ));
-                
-                if(distance < closest_distance){
-                    // NEW CLOSEST DISTANCE
-                    this.setClosest_distance(distance);
-                    // CLOSEST CELL
-                    closest_cell[0] = s;
-                    closest_cell[1] = e;
-                    System.out.println("print closest point");
-                }
             }
         }
     }
