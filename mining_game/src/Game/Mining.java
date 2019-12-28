@@ -10,14 +10,16 @@ public class Mining {
     public Cell[][] map;
     public int[] elevator = {0,0};
     public Cell closest_cell;
-    public int closest_distance;
+    public double closest_distance;
 
     public Mining(){
-        map  = new Cell[100][100];
+        map  = new Cell[20][20];
         
+        // FIRST CLOSEST CELL
+        closest_cell = new Cell(1,1);
         // INITAILIZE MAP
-        for(int i = 0; i < 100; i++){
-            for(int j = 0; j < 100; j++){
+        for(int i = 0; i < 20; i++){
+            for(int j = 0; j < 20; j++){
                 map[i][j] = new Cell(i,j);
             }
         }
@@ -50,26 +52,26 @@ public class Mining {
 
     public void setClosest_cell() {
 
-        int col = 1;
-        int row = 1;
-        // FIND CELL CLOSEST AT DIAGONAL
+        int col = 0;
+        int row = 0;
         
+        // FIND CELL CLOSEST AT DIAGONAL
         while(map[col][row].rock == false){
             col++;
             row++;
         }
-        // WORST CASE CLOSEST CELL
+        // REINITIALIZE NEW WORST CASE CLOSEST CELL
         closest_cell = new Cell(col,row);
-        closest_distance = (int)Math.sqrt( Math.pow(col, 2) + Math.pow(row,2) );
-        System.out.println(closest_distance);
+        closest_distance = Math.sqrt( Math.pow(col, 2) + Math.pow(row,2) );
         
+        System.out.println("closest d " + closest_distance);
         
-        int temp = 0;
+        double temp = 0;
         // FIND CLOSER CELL
         for(int i = 0; i <= closest_distance; i++){// row or y
             for(int j = 0; j <= closest_distance; j++){// col or x
-                temp = (int)Math.sqrt( Math.pow(i, 2) + Math.pow(j,2) );
-                if(closest_distance > temp){
+                temp = Math.sqrt( Math.pow(i, 2) + Math.pow(j,2) );
+                if(closest_distance > temp && map[i][j].getRock() == true){
                     closest_distance = temp;
                     closest_cell = new Cell(j,i);// 
                 }
@@ -77,7 +79,7 @@ public class Mining {
         }
     }
 
-    public int getClosest_distance() {
+    public double getClosest_distance() {
         return closest_distance;
     }
 

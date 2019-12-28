@@ -29,6 +29,9 @@ public class Game extends JFrame{
     // MAP ARRAY
     Mining m = new Mining();
     
+    // ROBOT
+    Robot r2 = new Robot();
+    
     public Game(){
         this.createWindow();
         
@@ -42,16 +45,16 @@ public class Game extends JFrame{
         status.setBackground(Color.BLUE);// set background color yellow
         
         // PANEL DETAILS
-        p.setLayout(new GridLayout(100,100,1,1));// grid layout
+        p.setLayout(new GridLayout(20,20,1,1));// grid layout
         p.setBackground(Color.black);// set background color black
         
         // ADD PANEL
         content.add(p, BorderLayout.CENTER);
         
         // ADD JLABEL TO PANEL
-        for(int row = 0; row < 100; row++){
-            for(int col = 0; col < 100; col++){
-                board[row][col] = new JButton(" ");
+        for(int row = 0; row < 20; row++){
+            for(int col = 0; col < 20; col++){
+                board[row][col] = new JButton("col"+col);
                 board[row][col].setOpaque(true);// set text visible
                 board[row][col].setBackground(Color.white);//set background color
                 if(m.map[row][col].rock == true){
@@ -75,9 +78,11 @@ public class Game extends JFrame{
     
     public static void main(String[] args) {
         Game g = new Game();
+        
         g.mine_closest();
-        
-        
+        g.mine_closest();
+        g.mine_closest();
+        g.mine_closest();
         
     }
     
@@ -95,7 +100,7 @@ public class Game extends JFrame{
     // FIND CLOSEST
     public void mine_closest(){
         Cell close = m.closest_cell;
-        
+        System.out.println(close.x);
         // SET CLOSEST CELL
         m.setClosest_cell();
         
@@ -105,5 +110,15 @@ public class Game extends JFrame{
         // PAINT CELL
         board[close.x][close.y].setBackground(Color.red);
         
+        
+        // ROBOT UPDATE TIME WORKED
+        this.robot_time_worked();
+    }
+    
+    // ROBOT TIME WORKED
+    public void robot_time_worked(){
+        int time_worked = (m.closest_cell.x + m.closest_cell.y) * r2.getSpeed();
+        
+        r2.setTime_worked(time_worked);
     }
 }
