@@ -30,7 +30,7 @@ public class Game extends JFrame{
     Mining m = new Mining();
     
     // ROBOT
-    Robot r2 = new Robot();
+    //Robot r2 = new Robot();
     
     public Game(){
         this.createWindow();
@@ -60,7 +60,7 @@ public class Game extends JFrame{
                 if(m.map[row][col].getRock() == true){
                     board[row][col].setBackground(Color.white);//set background color
                 }
-                else if(m.elevator[1] == row && m.elevator[0] == col){
+                else if(m.elevator.getY() == row && m.elevator.getX() == col){
                     board[row][col].setBackground(Color.blue);//set background color
                 }else{
                     // ELEVATOR
@@ -79,9 +79,12 @@ public class Game extends JFrame{
     public static void main(String[] args) {
         Game g = new Game();
         
-        for(int i = 0; i < 400; i++){
-            g.mine_closest();
+        Robot r2 = new Robot();
         
+        int t = r2.getTime_worked();
+        while(t < 100){
+            g.mine_closest();
+            //r2.setTime_worked(m.time_worked);
         }
         
     }
@@ -113,14 +116,8 @@ public class Game extends JFrame{
         board[m.closest_cell.getX()][m.closest_cell.getY()].setBackground(Color.red);
         
         
-        // ROBOT UPDATE TIME WORKED
-        this.robot_time_worked();
+        
     }
     
-    // ROBOT TIME WORKED
-    public void robot_time_worked(){
-        int time_worked = (m.closest_cell.getX() + m.closest_cell.getY()) * r2.getSpeed();
-        
-        r2.setTime_worked(time_worked);
-    }
+    
 }
