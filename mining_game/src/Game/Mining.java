@@ -61,19 +61,23 @@ public class Mining {
             row++;
         }
         // REINITIALIZE NEW WORST CASE CLOSEST CELL
-        closest_cell = new Cell(col,row);
+        closest_cell = map[col][row];
+        
         closest_distance = Math.sqrt( Math.pow(col, 2) + Math.pow(row,2) );
         
         System.out.println("closest d " + closest_distance);
         
         double temp = 0;
         // FIND CLOSER CELL
-        for(int i = 0; i <= closest_distance; i++){// row or y
-            for(int j = 0; j <= closest_distance; j++){// col or x
-                temp = Math.sqrt( Math.pow(i, 2) + Math.pow(j,2) );
-                if(closest_distance > temp && map[i][j].getRock() == true){
+        for(int y = 0; y <= closest_distance; y++){// row or y
+            for(int x = 0; x <= closest_distance; x++){// col or x
+                temp = Math.sqrt( Math.pow(y, 2) + Math.pow(x,2) );
+                if(closest_distance > temp && map[y][x].getRock() == true){
                     closest_distance = temp;
-                    closest_cell = new Cell(j,i);// 
+                    closest_cell = new Cell(x,y);
+                    
+                    System.out.println("closest cell (" + closest_cell.x + ", " + closest_cell.y + ") " + closest_cell.rock);
+                   
                 }
             }
         }

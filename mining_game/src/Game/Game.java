@@ -99,14 +99,16 @@ public class Game extends JFrame{
     
     // FIND CLOSEST
     public void mine_closest(){
+        
         Cell close = m.closest_cell;
-        System.out.println(close.x);
+        
         // SET CLOSEST CELL
         m.setClosest_cell();
         
         // MINE CELL
-        m.map[close.x][close.y].setRock(false);
-        
+        //m.map[close.x][close.y].setRock(false);
+        close.setRock(false);
+        System.out.println("second test bool " + close.getRock());
         // PAINT CELL
         board[close.x][close.y].setBackground(Color.red);
         
