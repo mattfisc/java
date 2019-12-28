@@ -14,9 +14,12 @@ public class Mining {
 
     public Mining(){
         map  = new Cell[20][20];
+        elevator[0] = Math.round(map.length/2);
+        elevator[1] = Math.round(map[0].length/2);
         
         // FIRST CLOSEST CELL
-        closest_cell = new Cell(1,1);
+        //closest_cell = new Cell(1,1);
+        
         // INITAILIZE MAP
         for(int i = 0; i < 20; i++){
             for(int j = 0; j < 20; j++){
@@ -51,32 +54,23 @@ public class Mining {
     }
 
     public void setClosest_cell() {
-
-        int col = 0;
-        int row = 0;
         
-        // FIND CELL CLOSEST AT DIAGONAL
-        while(map[col][row].rock == false){
-            col++;
-            row++;
-        }
-        // REINITIALIZE NEW WORST CASE CLOSEST CELL
-        closest_cell = map[col][row];
+        // WORST CASE DIAGONAL DISTANCE FROM ELEVATOR
+        closest_distance = Math.sqrt( Math.pow(20-elevator[1], 2) + Math.pow(20-elevator[0],2) );
         
-        closest_distance = Math.sqrt( Math.pow(col, 2) + Math.pow(row,2) );
-        
-        System.out.println("closest d " + closest_distance);
-        
-        double temp = 0;
         // FIND CLOSER CELL
-        for(int y = 0; y <= closest_distance; y++){// row or y
-            for(int x = 0; x <= closest_distance; x++){// col or x
-                temp = Math.sqrt( Math.pow(y, 2) + Math.pow(x,2) );
-                if(closest_distance > temp && map[y][x].getRock() == true){
-                    closest_distance = temp;
-                    closest_cell = new Cell(x,y);
+        for(int y = 0; y <= map.length; y++){// row or y
+            for(int x = 0; x <= map.length; x++){// col or x
+                
+                // CLOSEST DISTANCE FROM ELEVATOR
+                double temp = Math.sqrt( Math.pow(y-elevator[1], 2) + Math.pow(x-elevator[0],2) );
+                
+                if(closest_distance > temp && map[x][y].getRock() == true){
                     
-                    System.out.println("closest cell (" + closest_cell.x + ", " + closest_cell.y + ") " + closest_cell.rock);
+                    closest_distance = temp;
+                    closest_cell = map[x][y];
+                    
+                    System.out.println("closest cell (" + closest_cell.getX() + ", " + closest_cell.getY() + ") " + closest_cell.getRock());
                    
                 }
             }
