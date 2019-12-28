@@ -8,12 +8,13 @@ package Game;
 public class Mining {
 
     public Cell[][] map;
-    public int[] elevator = {0,0};
+    public int[] elevator = new int[2];
     public Cell closest_cell;
     public double closest_distance;
 
     public Mining(){
         map  = new Cell[20][20];
+        
         elevator[0] = Math.round(map.length/2);
         elevator[1] = Math.round(map[0].length/2);
         
@@ -60,7 +61,7 @@ public class Mining {
         
         // FIND CLOSER CELL
         for(int y = 0; y <= map.length; y++){// row or y
-            for(int x = 0; x <= map.length; x++){// col or x
+            for(int x = 0; x <= map[0].length; x++){// col or x
                 
                 // CLOSEST DISTANCE FROM ELEVATOR
                 double temp = Math.sqrt( Math.pow(y-elevator[1], 2) + Math.pow(x-elevator[0],2) );
@@ -70,7 +71,8 @@ public class Mining {
                     closest_distance = temp;
                     closest_cell = map[x][y];
                     
-                    System.out.println("closest cell (" + closest_cell.getX() + ", " + closest_cell.getY() + ") " + closest_cell.getRock());
+                    // TEST
+                    //System.out.println("closest cell (" + closest_cell.getX() + ", " + closest_cell.getY() + ") " + closest_cell.getRock());
                    
                 }
             }
