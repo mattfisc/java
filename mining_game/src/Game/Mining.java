@@ -59,7 +59,7 @@ public class Mining {
             row++;
         }
         // WORST CASE CLOSEST CELL
-        closest_cell = map[col][row];
+        closest_cell = new Cell(col,row);
         closest_distance = (int)Math.sqrt( Math.pow(col, 2) + Math.pow(row,2) );
         System.out.println(closest_distance);
         
