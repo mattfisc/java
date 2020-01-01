@@ -24,7 +24,7 @@ public class Game extends JFrame{
     JLabel status = new JLabel("Welcome to Mining", JLabel.CENTER);
     
     // BOARD ARRAY
-    JButton[][] board = new JButton[100][100];
+    JButton[][] board = new JButton[20][20];
     
     // MAP ARRAY
     Mining m = new Mining();
@@ -81,11 +81,14 @@ public class Game extends JFrame{
         
         Robot r2 = new Robot();
         
-        int t = r2.getTime_worked();
-        while(t < 100){
+        
+        for(int i = 0;i < 400; i++){
             g.mine_closest();
-            //r2.setTime_worked(m.time_worked);
         }
+        
+        
+            //r2.setTime_worked(m.time_worked);
+        
         
     }
     
@@ -94,7 +97,8 @@ public class Game extends JFrame{
     {
         // create program window
         this.setVisible(true);// set window visible
-        this.setSize(1800,1000);// set window size
+        //this.setSize(1800,1000);// set window size
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // set window will close on exiting button
         this.setTitle("Mining");// set window title

@@ -9,8 +9,10 @@ public class Mining {
 
     public Cell[][] map;
     public Cell elevator;
+    
     public Cell closest_cell;
     public double closest_distance;
+    
     public int time_worked;
 
     public Mining(){
@@ -60,13 +62,13 @@ public class Mining {
         closest_distance = Math.sqrt( Math.pow(20-elevator.getX(), 2) + Math.pow(20-elevator.getY(),2) );
         
         // FIND CLOSER CELL
-        for(int y = 0; y <= map.length; y++){// row or y
-            for(int x = 0; x <= map[0].length; x++){// col or x
+        for(int y = 0; y < map.length; y++){// row or y
+            for(int x = 0; x < map[0].length; x++){// col or x
                 
                 // CLOSEST DISTANCE FROM ELEVATOR
                 double temp = Math.sqrt( Math.pow(y-elevator.getY(), 2) + Math.pow(x-elevator.getX(),2) );
                 
-                if(closest_distance > temp && map[x][y].getRock() == true){
+                if(closest_distance >= temp && map[x][y].getRock() == true){
                     
                     closest_distance = temp;
                     closest_cell = map[x][y];
